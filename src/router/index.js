@@ -1,17 +1,18 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import ca from "element-ui/src/locale/lang/ca";
-import el from "element-ui/src/locale/lang/el";
 
 Vue.use(VueRouter)
 
 const Login = () => import('@/components/Login');
 const Home = () => import('@/components/Home');
+const Welcome = () => import('@/components/Welcome');
+const Users = () => import('@/components/content/users/Users');
+const CreateReport = () => import('@/components/content/report/CreateReport');
 
 const routes = [
   {
     path: '/',
-    redirect: '/login'
+    redirect: '/welcome'
   },
   {
     path: '/login',
@@ -22,6 +23,12 @@ const routes = [
     path: '/home',
     name: 'Home',
     component: Home,
+    redirect: '/welcome',
+    children: [
+      {path: '/welcome', name: 'Welcome', component: Welcome},
+      {path: '/users', name: 'Users', component: Users},
+      {path: '/create', name: 'CreateReport', component: CreateReport}
+    ],
   }
 ]
 
@@ -38,16 +45,19 @@ const router = new VueRouter({
 * next: 放行函数，next()----直接放行， next('/home')-----强制跳转
 */
 router.beforeEach((to, from, next) => {
+  console.log(to.path);
   switch (to.path) {
     case '/login':
       next();
       break;
-    case '/home':
+//    case '/home':
+    default:
       const tokenStr = true; //window.sessionStorage.getItem('token');
       if(!tokenStr){
         next('/login');
       }else{
         next();
+        console.log("jump to next");
       }
   }
 })

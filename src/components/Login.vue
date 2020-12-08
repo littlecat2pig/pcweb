@@ -38,7 +38,7 @@ export default {
         ],
         password: [
           {required: true, message: "请输入密码", trigger: "blur"},
-          {min: 6, max: 30, message: "长度在6-30个字符", trigger: "blur"}
+          {min: 4, max: 30, message: "长度在6-30个字符", trigger: "blur"}
         ]
       },
     }

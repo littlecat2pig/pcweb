@@ -1,25 +1,36 @@
 <template>
-<div>
-  <h2>首页</h2>
-  <el-button type="info" @click="logout">退出</el-button>
-</div>
+  <el-container class="home-container" direction="vertical">
+    <!--头部区域-->
+      <main-header></main-header>
+      <main-menu></main-menu>
+    <!--内容主体-->
+    <el-main>
+      <router-view></router-view>
+    </el-main>
+  </el-container>
 </template>
 
 <script>
+import MainHeader from "@/components/content/MainHeader"
+import MainMenu from '@/components/content/MainMenu'
+
 export default {
   name: "Home",
-  methods:{
-    /*退出登录*/
-    logout(){
-      /*清空token，即清除权限*/
-      window.sessionStorage.clear();
-      /*跳转到登录页面*/
-      this.$router.push('/login');
-    }
-  }
+  components:{
+    MainHeader,
+    MainMenu
+  },
 }
 </script>
 
 <style scoped>
+ .home-container{
+  height: 100%;
+}
 
+.el-main {
+  background-color: #E9EEF3;
+  color: #333;
+  text-align: center;
+}
 </style>
