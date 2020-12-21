@@ -6,8 +6,10 @@ Vue.use(VueRouter)
 const Login = () => import('@/components/Login');
 const Home = () => import('@/components/Home');
 const Welcome = () => import('@/components/Welcome');
-const Users = () => import('@/components/content/users/Users');
 const CreateReport = () => import('@/components/content/report/CreateReport');
+const Users = () => import('components/content/permission/Users');
+const Permission = () => import('@/components/content/permission/Permission');
+const Roles = () => import('@/components/content/permission/Roles');
 
 const routes = [
   {
@@ -27,7 +29,9 @@ const routes = [
     children: [
       {path: '/welcome', name: 'Welcome', component: Welcome},
       {path: '/users', name: 'Users', component: Users},
-      {path: '/create', name: 'CreateReport', component: CreateReport}
+      {path: '/create', name: 'CreateReport', component: CreateReport},
+      {path: '/permission', name: 'Permission', component: Permission},
+      {path: '/roles', name: 'Roles', component: Roles},
     ],
   }
 ]

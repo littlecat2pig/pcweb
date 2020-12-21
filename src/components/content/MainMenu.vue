@@ -43,7 +43,7 @@
         <template slot="title">
           <span>A流程</span>
         </template>
-        <el-menu-item index="/a">
+        <el-menu-item index="/A-a">
           <span>A-a</span>
         </el-menu-item>
         <el-menu-item index="/b">
@@ -54,6 +54,22 @@
         <template slot="title">
           <span>B流程</span>
         </template>
+      </el-menu-item>
+    </el-submenu>
+
+    <el-submenu index="3" :show-timeout='0' :hide-timeout='0'>
+      <template slot="title">
+        <span>权限管理</span>
+      </template>
+
+      <el-menu-item index="/users" @click="saveNavState('/users')">
+        <span>用户列表</span>
+      </el-menu-item>
+<!--      <el-menu-item index="/permission" @click="saveNavState('/permission')">
+        <span>菜单列表</span>
+      </el-menu-item>-->
+      <el-menu-item index="/roles" @click="saveNavState('/roles')">
+        <span>权限设置</span>
       </el-menu-item>
     </el-submenu>
   </el-menu>

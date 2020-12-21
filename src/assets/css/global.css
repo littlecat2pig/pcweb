@@ -21,3 +21,12 @@ html, body, #app {
   text-align: left;
   font-size: 18px;
 }
+
+.el-pagination{
+  margin-top: 25px;
+  text-align: center;
+}
+
+.opColumn .el-button{
+  font-size: 12px;
+}
